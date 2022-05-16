@@ -1,7 +1,7 @@
 {
-  "name": "fountainhead-bitserve",
-  "version": "0.0.7",
-  "description": "bitdb microservice",
+  "name": "bitd-rpc",
+  "version": "22.5.16",
+  "description": "RPC server for BitD (Bitcion Database).",
   "main": "index.js",
   "scripts": {
     "start": "node index"
@@ -9,13 +9,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fountainhead-core": "0.0.5",
-    "cors": "^2.8.5",
-    "dotenv": "^6.0.0",
-    "ejs": "^2.6.1",
-    "express": "^4.16.3",
-    "express-rate-limit": "^3.3.2",
-    "ip": "^1.1.5",
-    "p-queue": "^3.0.0"
+    "cors": "2.8.5",
+    "dotenv": "16.0.1",
+    "ejs": "3.1.8",
+    "express": "4.18.1",
+    "express-rate-limit": "6.4.0",
+    "fountainhead-core": "0.0.12",
+    "ip": "1.1.8",
+    "p-queue": "3.2.0"
   }
 }
