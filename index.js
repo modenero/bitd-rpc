@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config({ path: __dirname + '/.env' })
 const express = require('express')
 const bitqueryd = require('fountainhead-core').bitqueryd
 const PQueue = require('p-queue')
