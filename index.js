@@ -1,12 +1,14 @@
 require('dotenv').config({ path: __dirname + '/.env' })
-const express = require('express')
+
 const bitqueryd = require('fountainhead-core').bitqueryd
-const PQueue = require('p-queue')
-const ip = require('ip')
-const app = express()
-const rateLimit = require('express-rate-limit')
 const cors = require('cors')
+const ip = require('ip')
 const path = require('path')
+const PQueue = require('p-queue')
+const rateLimit = require('express-rate-limit')
+
+const express = require('express')
+const app = express()
 
 const config = {
     query: {
@@ -71,7 +73,7 @@ const limiter = rateLimit({
     }
 })
 
-app.get(/^\/q\/(.+)/, cors(), limiter, async function(req, res) {
+app.get(/^\/q\/(.+)/, cors(), limiter, async function (req, res) {
     let encoded = req.params[0]
 
     let r = JSON.parse(Buffer.from(encoded, 'base64').toString())
@@ -104,8 +106,9 @@ app.get(/^\/q\/(.+)/, cors(), limiter, async function(req, res) {
     }
 })
 
-app.get(/^\/explorer\/(.+)/, function(req, res) {
+app.get(/^\/explorer\/(.+)/, function (req, res) {
     let encoded = req.params[0]
+
     let decoded = Buffer.from(encoded, 'base64').toString()
 
     res.render(
@@ -125,11 +128,11 @@ app.get('/explorer', function (req, res) {
     )
 })
 
-app.get('/', function(req, res) {
-  res.redirect('/explorer')
+app.get('/', function (req, res) {
+    res.redirect('/explorer')
 })
 
-app.get(/^\/explorer2\/(.+)/, function(req, res) {
+app.get(/^\/explorer2\/(.+)/, function (req, res) {
     let encoded = req.params[0]
     let decoded = Buffer.from(encoded, 'base64').toString()
 
@@ -150,11 +153,11 @@ app.get('/explorer2', function (req, res) {
     )
 })
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
     res.redirect('/explorer')
 })
 
-let run = async function() {
+let run = async function () {
     db = await bitqueryd.init({
         url: (config.url ? config.url : process.env.url),
         timeout: config.timeout,
