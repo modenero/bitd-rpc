@@ -74,7 +74,7 @@ const limiter = rateLimit({
 app.get(/^\/q\/(.+)/, cors(), limiter, async function(req, res) {
     let encoded = req.params[0]
 
-    let r = JSON.parse(new Buffer(encoded, 'base64').toString())
+    let r = JSON.parse(Buffer.from(encoded, 'base64').toString())
 
     if (r.q && r.q.aggregate) {
         // add to aggregate queue
